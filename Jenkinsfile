@@ -4,11 +4,7 @@ pipeline {
     stages {
         stage('Example Initialization') {
             echo "Running ${env.BUILD_TAG} on ${env.JENKINS_URL}"
-            if (env.BRANCH_NAME == 'main') {
-                echo 'executed on main branch'
-            } else {
-                echo "executed on branch ${env.BRANCH_NAME}"
-            }
+            echo "executed on branch ${env.BRANCH_NAME}"
         }
         stage('Build') {
             steps {
