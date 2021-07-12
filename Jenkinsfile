@@ -65,7 +65,7 @@ pipeline {
         }
         stage('Example Deploy 1') {
             when {
-                allof {
+                allOf {
                     branch 'main'
                     environment name: 'DEPLOY_TO', value: 'production'
                 }
