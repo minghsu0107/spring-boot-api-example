@@ -1,5 +1,4 @@
 ## Overview
-
 An example project to demonstrate:
 
 * how to create a Spring Boot REST API with Gradle
