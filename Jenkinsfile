@@ -3,8 +3,10 @@ pipeline {
 
     stages {
         stage('Example Initialization') {
-            echo "Running ${env.BUILD_TAG} on ${env.JENKINS_URL}"
-            echo "executed on branch ${env.BRANCH_NAME}"
+            steps {
+                echo "Running ${env.BUILD_TAG} on ${env.JENKINS_URL}"
+                echo "executed on branch ${env.BRANCH_NAME}"
+            }
         }
         stage('Build') {
             steps {
