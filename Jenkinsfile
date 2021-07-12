@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    triggers {
+        pollSCM '* * * * *'
+    }
     stages {
         stage('Example Initialization') {
             echo "Running ${env.BUILD_TAG} on ${env.JENKINS_URL}"
