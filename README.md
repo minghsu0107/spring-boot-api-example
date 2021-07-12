@@ -10,7 +10,13 @@ An example project to demonstrate:
 
 * JDK 8+
 * Docker
+* Github webhook
+  * `Settings` -> `Webhooks` -> add a webhook `https://<jenkins-host>/github-webhook/` with content type `application/json`
 * Jenkins
+  * If Jenkins is running in a container, remember to mount host docker socket so that Jenkins could build and publish docker image in pipeline steps
+  * To create a new project, click `New item` and choose `Multibranch Pipeline`
+    * `Branch Sources` -> Enter Repository HTTPS URL
+    * `Build Configuration` -> Mode: `by Jenkinsfile`, Script Path: `Jenkinsfile`
 
 Note that to initialize a gradle project, run `gradle init` to start the Gradle setup wizard, choosing to create a basic Groovy project with the default name. This creates a skeleton of a Gradle project, including the Gradle wrapper used for interacting with the application.
 ## Running
