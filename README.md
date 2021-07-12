@@ -11,12 +11,6 @@ An example project to demonstrate:
 * Docker
 * Jenkins
 
-The following Docker command builds and launches a Jenkins instance.
-```bash
-docker build jenkins/ -t myjenkins
-docker run -d --name jenkins -p '8080:8080' -v /var/run/docker.sock:/var/run/docker.sock myjenkins
-```
-
 Note that to initialize a gradle project, run `gradle init` to start the Gradle setup wizard, choosing to create a basic Groovy project with the default name. This creates a skeleton of a Gradle project, including the Gradle wrapper used for interacting with the application.
 ## Running
 ```bash

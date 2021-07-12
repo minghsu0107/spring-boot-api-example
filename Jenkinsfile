@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    triggers {
-        githubPush()
-    }
+
     stages {
         stage('Example Initialization') {
             echo "Running ${env.BUILD_TAG} on ${env.JENKINS_URL}"
