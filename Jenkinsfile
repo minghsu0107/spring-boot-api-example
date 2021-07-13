@@ -10,17 +10,17 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'gradle assemble'
+                sh './gradlew assemble'
             }
         }
         stage('Test') {
             steps {
-                sh 'gradle test'
+                sh './gradlew test'
             }
         }
         stage('Build Docker image') {
             steps {
-                sh 'gradle docker'
+                sh './gradlew docker'
             }
         }
         stage('Push Docker image') {
@@ -29,7 +29,7 @@ pipeline {
             }
             steps {
                 sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
-                sh 'gradle dockerPush'
+                sh './gradlew dockerPush'
             }
         }
         stage('Example Parallel Stages') {
