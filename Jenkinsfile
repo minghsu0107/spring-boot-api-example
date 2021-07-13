@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Build Docker image') {
             environment {
-                BUILD_TAG = ${env.BUILD_TAG}
+                BUILD_TAG = "${env.BUILD_TAG}"
             }
             steps {
                 sh './gradlew docker'
