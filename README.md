@@ -1,9 +1,9 @@
 ## Overview
 An example project to demonstrate:
 
-* how to create a Spring Boot REST API with Gradle
-* how to run Spring Boot in Docker and publish to Docker Hub
-* how to integrate Sprint Boot with Jenkins CI
+* how to create a Spring Boot REST API with unit testing
+* how to run Spring Boot in Docker and publish to Docker Hub using Gradle
+* how to integrate Gradle with Jenkins CI
 
 ### Pre-requisites
 * JDK 8+
