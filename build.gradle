@@ -8,7 +8,6 @@ plugins {
     id 'jp.classmethod.aws.cloudformation' version '0.41'
 }
 
-version = scmVersion.version
 sourceCompatibility = 8
 
 repositories {
@@ -35,13 +34,17 @@ test {
 }
 
 String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'minghsu0107'
-String imageName = "${dockerHubUsernameProperty}/spring-boot-api-example:$version"
+String imageName = "${dockerHubUsernameProperty}/spring-boot-api-example:$System.env.BUILD_TAG"
 
 docker {
     name imageName
+    tags "$System.env.BUILD_TAG"
     dockerfile file('./docker-resources/Dockerfile')
     files "build/libs/${bootJar.archiveFileName.get()}", "docker-resources/run.sh"
     buildArgs([JAR_FILE: bootJar.archiveFileName.get()])
+}
+
+dockerPush {
 }
 
 dockerRun {

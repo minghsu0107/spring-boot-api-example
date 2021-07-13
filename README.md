@@ -26,6 +26,7 @@ services:
       - 8080:8080
       - 50000:50000
     tty: true
+    user: root
     volumes:
       - jenkins-data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
