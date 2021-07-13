@@ -14,7 +14,8 @@ An example project to demonstrate:
   * To create a new project, click `New item` and choose `Multibranch Pipeline`
     * `Branch Sources` -> `Add Source` -> `Github` -> enter Repository HTTPS URL
     * `Build Configuration` -> Mode: `by Jenkinsfile`, Script Path: `Jenkinsfile`
-  * If Jenkins is running in a container, remember to mount host docker socket so that Jenkins could build and publish docker image in pipeline steps. Below is a docker-compose example.
+  * To registal credentials, go to `Manage Jenkins` -> `Manage Credentials` -> `Jenkins` -> `Global Credentials` -> `Add Credentials` -> enter username, password, and credential ID. In our example, the credential ID is `docker-hub`, which contains the dockerhub username and password
+  * If Jenkins runs in a container, remember to mount host docker socket so that Jenkins could build and publish docker image in pipeline steps. Below is a docker-compose example.
 
 ```yaml
 version: '3'
