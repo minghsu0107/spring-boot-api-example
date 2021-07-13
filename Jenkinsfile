@@ -18,21 +18,24 @@ pipeline {
                 sh './gradlew test'
             }
         }
-        stage('Build Docker image') {
+        stages('Publish') {
             environment {
+                IMAGE_NAME = "minghsu0107/spring-boot-api-example"
                 BUILD_TAG = "${env.BUILD_TAG}"
             }
-            steps {
-                sh './gradlew docker'
+            stage('Build Docker image') {
+                steps {
+                    sh './gradlew docker'
+                }
             }
-        }
-        stage('Push Docker image') {
-            environment {
-                DOCKER_HUB_LOGIN = credentials('docker-hub')
-            }
-            steps {
-                sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
-                sh './gradlew dockerPush'
+            stage('Push Docker image') {
+                environment {
+                    DOCKER_HUB_LOGIN = credentials('docker-hub')
+                }
+                steps {
+                    sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
+                    sh 'docker push $IMAGE_NAME:$BUILD_TAG'
+                }
             }
         }
         stage('Example Parallel Stages') {
