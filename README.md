@@ -20,7 +20,7 @@ An example project to demonstrate:
 version: '3'
 services:
   jenkins:
-    image: jenkinsci/blueocean
+    image: jenkinsci/blueocean:1.24.7
     restart: always
     ports:
       - 8080:8080
@@ -33,31 +33,60 @@ volumes:
   jenkins-data:
 ```
 ### Running
+Using gradlew wrapper:
 ```bash
 ./gradlew bootRun
+```
+Using gradle:
+```bash
+gradle bootRun
 ```
 ### Project Initialization
 To initialize a gradle project, run `gradle init` to start the Gradle setup wizard, choosing to create a basic Groovy project with the default name. This creates a skeleton of a Gradle project, including the Gradle wrapper used for interacting with the application.
 ### Testing
+Using gradlew wrapper:
 ```bash
 ./gradlew test
 ```
-### Building (no tests)
+Using gradle:
 ```bash
-./gradlew assemble
+gradle test
+```
+### Building (no tests)
+Clean and build without tests using gradlew wrapper:
+```bash
+./gradlew clean assemble
+```
+Using gradle:
+```bash
+gradle clean assemble
 ```
 ### Building (with tests)
+Clean and build with tests using gradlew wrapper:
 ```bash
-./gradlew build
+./gradlew clean build
+```
+Using gradle:
+```bash
+gradle clean build
 ```
 ### Building and Running in Docker
 The following command build applcation jar without tests, build docker image, and run the container in the backgroud.
 ```bash
 ./gradlew assemble docker dockerRun
 ```
+Using gradle:
+```bash
+gradle assemble docker dockerRun
+```
 ### Stopping Docker container
+Using gradlew wrapper:
 ```bash
 ./gradlew dockerStop
+```
+Using gradle:
+```bash
+gradle dockerStop
 ```
 ### Using API
 

@@ -9,7 +9,7 @@ ENV LANG en_US.UTF-8
 ENV env_java_debug_enabled=false
 
 WORKDIR /app
-COPY docker-resources/run.sh ./
+COPY run.sh ./
 COPY --from=builder dependencies/ ./
 COPY --from=builder spring-boot-loader/ ./
 COPY --from=builder snapshot-dependencies/ ./
