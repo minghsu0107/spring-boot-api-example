@@ -3,16 +3,15 @@ An example project to demonstrate:
 
 * how to create a Spring Boot REST API with unit testing
 * how to run Spring Boot in Docker and publish to Docker Hub using Gradle
-* how to integrate Gradle with Jenkins CI
+* how to integrate Gradle with Jenkins CI (single repository)
 
 ### Pre-requisites
 * JDK 8+
 * Docker
-* Github webhook
-  * `Settings` -> `Webhooks` -> add a webhook `https://<jenkins-host>/github-webhook/` with content type `application/json`
 * Jenkins
+  * Make sure to have [Github Branch Source Plugin](https://plugins.jenkins.io/github-branch-source/) installed and finish the setups
   * To create a new project, click `New item` and choose `Multibranch Pipeline`
-    * `Branch Sources` -> `Add Source` -> `Github` -> enter Repository HTTPS URL
+    * `Branch Sources` -> `Add Source` -> `Github` -> enter Github app credentials and repository HTTPS URL
     * `Build Configuration` -> Mode: `by Jenkinsfile`, Script Path: `Jenkinsfile`
   * To registal credentials, go to `Manage Jenkins` -> `Manage Credentials` -> `Jenkins` -> `Global Credentials` -> `Add Credentials` -> enter username, password, and credential ID. In our example, the credential ID is `docker-hub`, which contains the dockerhub username and password
   * If Jenkins runs in a container, remember to mount host docker socket so that Jenkins could build and publish docker image in pipeline steps. Below is a docker-compose example.
